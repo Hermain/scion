@@ -237,8 +237,8 @@ cmd_test(){
     local ret=0
     case "$1" in
         py) shift; py_test "$@"; ret=$((ret+$?));;
-        go) shift; bazel_test ; ret=$((ret+$?));;
-        *) py_test; ret=$((ret+$?)); bazel_test; ret=$((ret+$?));;
+        go) shift; bazel_test --sandbox_debug; ret=$((ret+$?));;
+        *) py_test; ret=$((ret+$?)); bazel_test --sandbox_debug; ret=$((ret+$?));;
     esac
     return $ret
 }
